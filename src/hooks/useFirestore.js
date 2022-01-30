@@ -13,18 +13,18 @@ const useFirestore = (collection) => {
     });
     setDocs(documents)
 });
-    // const unsub = projectFirestore.collection(collection)
-    //   .orderBy('createdAt', 'desc')
-    //   .onSnapshot(snap => {
-    //     let documents = [];
-    //     snap.forEach(doc => {
-    //       documents.push({...doc.data(), id: doc.id});
-    //     });
-    //   console.log(documentsts)
-    //     setDocs(documents);
-    //   });
+     const unsub = projectFirestore.collection(collection)
+       .orderBy('createdAt', 'desc')
+       .onSnapshot(snap => {
+         let documents = [];
+         snap.forEach(doc => {
+           documents.push({...doc.data(), id: doc.id});
+         });
+       console.log(documents)
+         setDocs(documents);
+       });
 
-    // return () => unsub();
+     return () => unsub();
     // this is a cleanup function that react will run when
     // a component using the hook unmounts
   }, [collection]);
